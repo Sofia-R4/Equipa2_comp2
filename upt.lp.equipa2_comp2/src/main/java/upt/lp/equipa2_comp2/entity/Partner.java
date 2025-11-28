@@ -1,7 +1,7 @@
 /**
  * 
  */
-package upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.entity;
+package upt.lp.equipa2_comp2.entity;
 
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ import java.util.List;
 import jakarta.persistence.*;
 	@Entity
 	@Table(name="Partners")
-	public class PartnerEntity {
+	public class Partner {
 		
 		@Id
 		@Column(name="id")
@@ -25,16 +25,16 @@ import jakarta.persistence.*;
 		private String partner;
 		
 		@OneToMany(mappedBy= "partner", cascade=CascadeType.ALL, orphanRemoval=true)
-		private List<ProgramEntity>programas= new ArrayList<ProgramEntity>();
+		private List<Program>programas= new ArrayList<Program>();
 
 		/**
 		 * @param namePartner
 		 */
-		public PartnerEntity(String partner) {
+		public Partner(String partner) {
 			this.partner = partner;
 		}
 		
-		public PartnerEntity() {
+		public Partner() {
 			
 		}
 
@@ -52,11 +52,11 @@ import jakarta.persistence.*;
 			this.partner = partner;
 		}
 
-		public List<ProgramEntity> getProgramas(){
+		public List<Program> getProgramas(){
 			return programas;
 		}
 		
-		public void adicionarPrograma(ProgramEntity novoPrograma) {
+		public void adicionarPrograma(Program novoPrograma) {
 			programas.add(novoPrograma);
 			novoPrograma.setPartner(this);
 		}

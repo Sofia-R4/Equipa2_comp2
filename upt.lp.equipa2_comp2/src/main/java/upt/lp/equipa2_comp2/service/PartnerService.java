@@ -1,9 +1,10 @@
 /**
  * 
  */
-package upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.service;
-import upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.entity.Partner;
-import upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.repository.PartnerRepository;
+package upt.lp.equipa2_comp2.service;
+
+import upt.lp.equipa2_comp2.entity.Partner;
+import upt.lp.equipa2_comp2.repository.PartnerRepository;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class PartnerService {
 	}
 	
 	public List<Partner> getAllPartners(){
-		return partnerRepository.findById(id).orElse(null);
+		return partnerRepository.findAll();
 	}
 	
 	public Partner getPartner(Long id) {

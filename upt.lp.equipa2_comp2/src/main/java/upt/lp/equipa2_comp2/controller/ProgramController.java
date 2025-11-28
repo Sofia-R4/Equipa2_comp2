@@ -1,10 +1,9 @@
 /**
  * 
  */
-package upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.controller;
-import upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.entity.Program;
-
-import upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.service.ProgramService;
+package upt.lp.equipa2_comp2.controller;
+import upt.lp.equipa2_comp2.entity.Program;
+import upt.lp.equipa2_comp2.service.ProgramService;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.entity;
+package upt.lp.equipa2_comp2.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
@@ -23,7 +23,7 @@ import jakarta.persistence.Table;
 @DiscriminatorColumn (name = "user_type", discriminatorType = 
 DiscriminatorType.STRING) 
 @DiscriminatorValue("Manager")
-public class UserEntity {
+public class User {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column (name="user_id")
@@ -40,11 +40,11 @@ public class UserEntity {
 	 * @param password
 	 */
 	
-	public UserEntity() {
+	public User() {
 		
 	}
 	
-	public UserEntity(String name, String email, String password) {
+	public User(String name, String email, String password) {
 		this.name = name;
 		this.email = email;
 		this.password = password;

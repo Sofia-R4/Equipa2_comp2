@@ -1,7 +1,7 @@
 /**
  * 
  */
-package upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.entity;
+package upt.lp.equipa2_comp2.entity;
 
 import jakarta.persistence.*;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="Tipos")
-public class TypeEntity {
+public class Type {
 	
 	@Id 
 	@Column(name="id")
@@ -21,16 +21,16 @@ public class TypeEntity {
 	private String type;
 	
 	@OneToMany(mappedBy= "type", cascade=CascadeType.ALL, orphanRemoval=true)
-	private List<ProgramEntity>programas= new ArrayList<ProgramEntity>();
+	private List<Program>programas= new ArrayList<Program>();
 	
 	/**
 	 * @param type
 	 */
-	public TypeEntity(String type) {
+	public Type(String type) {
 		this.type = type;
 	}
 	
-	public TypeEntity() {
+	public Type() {
 		
 	}
 	
@@ -51,11 +51,11 @@ public class TypeEntity {
 		return id;
 	}
 	
-	public List<ProgramEntity> getProgramas(){
+	public List<Program> getProgramas(){
 		return programas;
 	}
 	
-	public void adicionarPrograma(ProgramEntity novoPrograma) {
+	public void adicionarPrograma(Program novoPrograma) {
 		programas.add(novoPrograma);
 		novoPrograma.setType(this);
 	}

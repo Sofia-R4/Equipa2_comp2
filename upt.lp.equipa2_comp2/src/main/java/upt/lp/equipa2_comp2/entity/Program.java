@@ -1,7 +1,7 @@
 /**
  * 
  */
-package upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.entity;
+package upt.lp.equipa2_comp2.entity;
 
 import jakarta.persistence.*; 
 /**
@@ -9,7 +9,7 @@ import jakarta.persistence.*;
  */
 @Entity
 @Table(name="Programas")
-public class ProgramEntity {
+public class Program {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,18 +22,18 @@ public class ProgramEntity {
 	
 	@ManyToOne
 	@JoinColumn(name="tipo_id", nullable = false) //foreign key
-	private TypeEntity type;
+	private Type type;
 	
 	@ManyToOne
 	@JoinColumn(name="partner_id", nullable= false)
-	private PartnerEntity partner;
+	private Partner partner;
 	private int vagas;
 
-	public ProgramEntity() {
+	public Program() {
 		
 	}
 	
-	public ProgramEntity(String nomeP, String description, String location, int contact, int vagas) {
+	public Program(String nomeP, String description, String location, int contact, int vagas) {
 		this.nomeP = nomeP;
 		this.description = description;
 		this.location = location;
@@ -123,22 +123,22 @@ public class ProgramEntity {
 	/**
 	 * @return the type
 	 */
-	public TypeEntity getType() {
+	public Type getType() {
 		return type;
 	}
 	
-	public PartnerEntity getPartner() {
+	public Partner getPartner() {
 		return partner;
 	}
 
 	/**
 	 * @param type the type to set
 	 */
-	public void setType(TypeEntity type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 	
-	public void setPartner(PartnerEntity partner) {
+	public void setPartner(Partner partner) {
 		this.partner= partner;
 	}
 

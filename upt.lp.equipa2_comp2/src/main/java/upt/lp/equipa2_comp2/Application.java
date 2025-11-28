@@ -1,4 +1,4 @@
-package upt.lp.equipa2_comp2.upt.lp.equipa2_comp2;
+package upt.lp.equipa2_comp2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
