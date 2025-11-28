@@ -1,7 +1,7 @@
 /**
  * 
  */
-package upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.entity;
+package upt.lp.equipa2_comp2.entity;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
@@ -11,15 +11,15 @@ import jakarta.persistence.Entity;
  */
 @Entity 
 @DiscriminatorValue("Student")
-public class StudentEntity extends UserEntity {
+public class Student extends User {
 	private int num;
 	
 	
-	public StudentEntity() {
+	public Student() {
 		
 	}
 	
-	public StudentEntity(String nome, String email, String password, int num) {
+	public Student(String nome, String email, String password, int num) {
 		super(nome, email, password);
 		this.num = num;
 	}

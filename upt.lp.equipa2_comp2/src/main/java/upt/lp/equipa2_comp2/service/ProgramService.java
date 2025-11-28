@@ -1,9 +1,9 @@
 /**
  * 
  */
-package upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.service;
-import upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.entity.Program;
-import upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.repository.ProgramRepository;
+package upt.lp.equipa2_comp2.service;
+import upt.lp.equipa2_comp2.entity.Program;
+import upt.lp.equipa2_comp2.repository.ProgramRepository;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class ProgramService {
 	}
 	
 	public List<Program> getAllPrograms(){
-		return programRepository.findById(id).orElse(null);
+		return programRepository.findAll();
 	}
 	
 	public Program getProgram(Long id) {

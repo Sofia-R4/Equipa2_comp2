@@ -1,11 +1,11 @@
 /**
  * 
  */
-package upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.service;
+package upt.lp.equipa2_comp2.service;
 
-import upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.entity.User;
-import upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.repository.ProgramRepository;
-import upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.repository.UserRepository;
+import upt.lp.equipa2_comp2.entity.User;
+import upt.lp.equipa2_comp2.repository.ProgramRepository;
+import upt.lp.equipa2_comp2.repository.UserRepository;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class UserService {
 	}
 
 	public List<User> getAllUsers(){
-		return userRepository.findById(id).orElse(null);
+		return userRepository.findAll();
 	}
 	
 	public User getUser(Long id) {

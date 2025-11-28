@@ -1,10 +1,10 @@
 /**
  * 
  */
-package upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.service;
-import upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.entity.Type;
-import upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.repository.ProgramRepository;
-import upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.repository.TypeRepository;
+package upt.lp.equipa2_comp2.service;
+import upt.lp.equipa2_comp2.entity.Type;
+import upt.lp.equipa2_comp2.repository.ProgramRepository;
+import upt.lp.equipa2_comp2.repository.TypeRepository;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class TypeService {
 	}
 
 	public List<Type> getAllTypes(){
-		return typeRepository.findById(id).orElse(null);
+		return typeRepository.findAll();
 	}
 	
 	public Type getType(Long id) {

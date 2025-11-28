@@ -1,9 +1,9 @@
 /**
  * 
  */
-package upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.service;
-import upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.entity.Student;
-import upt.lp.equipa2_comp2.upt.lp.equipa2_comp2.repository.StudentRepository;
+package upt.lp.equipa2_comp2.service;
+import upt.lp.equipa2_comp2.entity.Student;
+import upt.lp.equipa2_comp2.repository.StudentRepository;
 
 import java.util.List;
 
@@ -18,13 +18,14 @@ public class StudentService {
 	/**
 	 * @param studentRepository
 	 */
+	//Constructor injection
 	public StudentService(StudentRepository studentRepository) {
 		super();
 		this.studentRepository = studentRepository;
 	}
 	
 	public List<Student> getAllStudents(){
-		return studentRepository.findById(id).orElse(null);
+		return studentRepository.findAll();
 	}
 	
 	public Student getStudent(Long id) {
