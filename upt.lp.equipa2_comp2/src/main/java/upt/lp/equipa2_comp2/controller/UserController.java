@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.*;
  * 
  */
 @RestController
-@RequestMapping ("//user")
+@RequestMapping ("/voluntariado/users")
 public class UserController {
-	
+
 	private UserService userService;
 
 	/**
@@ -35,7 +35,7 @@ public class UserController {
 		return userService.getUser(id);
 	}
 	
-	@PostMapping
+	@PostMapping("/admin")
 	public User create (@RequestBody User u) {
 		return userService.createUser(u);
 	}
@@ -50,6 +50,4 @@ public class UserController {
 		userService.deleteUser(id);
 	}
 
-	//criação do repositório no git
-	
 }

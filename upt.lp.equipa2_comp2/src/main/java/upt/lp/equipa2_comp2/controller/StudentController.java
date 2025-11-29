@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * 
  */
 @RestController
-@RequestMapping ("//student")
+@RequestMapping ("/voluntariado/students")
 public class StudentController {
 	
 	private final StudentService studentService;
@@ -35,7 +35,7 @@ public class StudentController {
 		return studentService.getStudent(id);
 	}
 	
-	@PostMapping
+	@PostMapping("/student")
 	public Student create (@RequestBody Student s) {
 		return studentService.createStudent(s);
 	}
