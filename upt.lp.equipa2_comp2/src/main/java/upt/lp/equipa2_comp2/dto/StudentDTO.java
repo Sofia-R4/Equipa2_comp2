@@ -19,6 +19,7 @@ public class StudentDTO {
 	    @NotNull(message = "O estudante deve ter um numero")
 	    private int num;
 	    
+	    
 	    public int getNum() {
 	    	return num;
 	    }

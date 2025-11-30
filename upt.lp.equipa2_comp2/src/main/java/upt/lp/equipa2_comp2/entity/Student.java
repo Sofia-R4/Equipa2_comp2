@@ -2,10 +2,6 @@
  * 
  */
 package upt.lp.equipa2_comp2.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
-
 import java.util.ArrayList;
 import java.util.List;
 

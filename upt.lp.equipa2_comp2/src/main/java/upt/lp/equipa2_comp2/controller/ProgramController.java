@@ -25,7 +25,7 @@ public class ProgramController {
 		this.programService = programService;
 	}
 	
-	public List<ProgramDTO> getAll() {
+	public List<ProgramDTO> getAllPrograms() {
 		return programService.getAllPrograms()
 				.stream()
 				.map(ProgramMapper::toDTO)

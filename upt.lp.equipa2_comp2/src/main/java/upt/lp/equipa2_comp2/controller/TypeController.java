@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  * 
  */
 @RestController
-@RequestMapping ("/voluntariado/type")
+@RequestMapping ("/voluntariado/types")
 public class TypeController {
 	
 	private final TypeService typeService;
@@ -42,7 +42,7 @@ public class TypeController {
 		return TypeMapper.toDTO(typeService.getType(id));
 	}
 	
-	@PostMapping
+	@PostMapping("/type")
 	public TypeDTO createType(@RequestBody TypeDTO tDTO) {
 		Type t = TypeMapper.toEntity(tDTO);
 		return TypeMapper.toDTO(typeService.createType(tDTO));
