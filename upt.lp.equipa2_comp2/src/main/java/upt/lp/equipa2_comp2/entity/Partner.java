@@ -68,10 +68,16 @@ import jakarta.persistence.*;
 			return partner;
 		}
 
+		/**
+		 * @param id the id to set
+		 */
+		public void setId(Long id) {
+			this.id = id;
+		}
+
 		@Override
 		public String toString() {
 			return "Partner [id=" + id + ", Partner=" + partner + "]";
 		}
-		
 		
 	}

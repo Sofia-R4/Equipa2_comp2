@@ -15,5 +15,7 @@ import upt.lp.equipa2_comp2.entity.Program;
 public interface ProgramRepository extends JpaRepository<Program, Long> {
 
 	Optional<Program> findByNomeP(String nomeP);  //query automatica do SPJPA
+	
+	
 
 }

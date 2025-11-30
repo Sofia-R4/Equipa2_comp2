@@ -51,6 +51,13 @@ public class Type {
 		return id;
 	}
 	
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public List<Program> getProgramas(){
 		return programas;
 	}

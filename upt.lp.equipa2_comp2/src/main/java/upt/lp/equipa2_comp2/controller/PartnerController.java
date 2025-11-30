@@ -2,7 +2,9 @@
  * 
  */
 package upt.lp.equipa2_comp2.controller;
+import upt.lp.equipa2_comp2.dto.PartnerDTO;
 import upt.lp.equipa2_comp2.entity.Partner;
+import upt.lp.equipa2_comp2.mapper.PartnerMapper;
 import upt.lp.equipa2_comp2.service.PartnerService;
 
 import java.util.List;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  * 
  */
 @RestController
-@RequestMapping ("/api/Partners")
+@RequestMapping ("/voluntariado/partners")
 public class PartnerController {
 	
 	private final PartnerService partnerService;
@@ -27,23 +29,28 @@ public class PartnerController {
 	}
 	
 	@GetMapping
-	 public List<Partner> getAll() {
-		return partnerService.getAllPartners();
+	 public List<PartnerDTO> getAllPartners() {
+		return partnerService.getAllPartners()
+				.stream()
+				.map(PartnerMapper :: toDTO)
+				.toList();
 	 }
 	
 	@GetMapping("/{id}")
-	 public Partner getById(@PathVariable Long id) {
-		return partnerService.getPartner(id);
+	 public PartnerDTO getById(@PathVariable Long id) {
+		return PartnerMapper.toDTO(partnerService.getPartner(id));
 	 }
 	
 	@PostMapping
-	 public Partner create(@RequestBody Partner p) {
-		return partnerService.createPartner(p);
+	 public PartnerDTO createPartner(@RequestBody PartnerDTO pDTO) {
+		Partner p = PartnerMapper.toEntity(pDTO);
+		return PartnerMapper.toDTO(partnerService.createPartner(pDTO));
 	 }
 	
 	@PutMapping("/{id}")
-	 public Partner update(@PathVariable Long id, @RequestBody Partner p) {
-		return partnerService.updatePartner(id, p);
+	 public PartnerDTO update(@PathVariable Long id, @RequestBody PartnerDTO pDTO) {
+		Partner update = partnerService.updatePartner(id, pDTO);
+		return PartnerMapper.toDTO(update);
 	 }
 	
 	@DeleteMapping("/{id}")

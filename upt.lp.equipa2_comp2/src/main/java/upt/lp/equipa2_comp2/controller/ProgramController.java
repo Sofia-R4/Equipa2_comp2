@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
  * 
  */
 @RestController
-@RequestMapping ("/api/programs")
+@RequestMapping ("/voluntariado/programs")
 public class ProgramController {
 	
 	private final ProgramService programService;
@@ -55,6 +55,5 @@ public class ProgramController {
 	 @DeleteMapping("{id}")
 	 public void delete (@PathVariable Long id) {
 		 programService.deleteProgram(id);
-	 } 
-	 
+	 } 	 
 }
