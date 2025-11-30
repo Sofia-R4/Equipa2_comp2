@@ -2,7 +2,9 @@
  * 
  */
 package upt.lp.equipa2_comp2.service;
+import upt.lp.equipa2_comp2.dto.TypeDTO;
 import upt.lp.equipa2_comp2.entity.Type;
+import upt.lp.equipa2_comp2.mapper.TypeMapper;
 import upt.lp.equipa2_comp2.repository.ProgramRepository;
 import upt.lp.equipa2_comp2.repository.TypeRepository;
 
@@ -30,16 +32,17 @@ public class TypeService {
 	}
 	
 	public Type getType(Long id) {
-		return typeRepository.findById(id).orElse(null);
+		return typeRepository.findById(id).orElseThrow(()-> new RuntimeException("Type not found"));
 	}
 	
-	public Type createType(Type t) {
+	public Type createType(TypeDTO tDTO) {
+		Type t = TypeMapper.toEntity(tDTO);
 		return typeRepository.save(t);
 	}
 	
-	public Type updateType(Long id, Type t) {
-		Type existing = typeRepository.findById(id).orElseThrow(() -> new RuntimeException("Partner not found"));
-		
+	public Type updateType(Long id, TypeDTO tDTO) {
+		Type existing = typeRepository.findById(id).orElseThrow(() -> new RuntimeException("Type not found"));
+		existing.setType(tDTO.getType());
 		return typeRepository.save(existing);
 	}
 	

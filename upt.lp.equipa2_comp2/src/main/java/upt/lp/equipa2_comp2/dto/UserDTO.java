@@ -16,6 +16,7 @@ public class UserDTO {
     @NotBlank(message = "A password é obrigatória")
     @Size(min = 9, message = "A password deve ter pelo menos 9 caracteres")
     private String password;
+    
 
     // getters e setters
     public String getName() {

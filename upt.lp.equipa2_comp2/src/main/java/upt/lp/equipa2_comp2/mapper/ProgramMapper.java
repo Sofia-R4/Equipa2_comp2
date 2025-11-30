@@ -8,33 +8,33 @@ import upt.lp.equipa2_comp2.dto.ProgramDTO;
 public class ProgramMapper {
    	
 	// ENTITY -> DTO
-	 public static ProgramDTO toDTO(Program p) {
-	        ProgramDTO dto = new ProgramDTO();
-	        dto.setId(p.getId());
-	        dto.setNomeP(p.getNomeP());
-	        dto.setDescription(p.getDescription());
-	        dto.setLocation(p.getLocation());
-	        dto.setContact(p.getContact());
-	        dto.setVagas(p.getVagas());
-	        dto.setPartner(p.getPartner().getPartner()); // pegar o nome
-	        dto.setType(p.getType().getType());          // pegar o nome
-	        return dto;
-	    }
+	public static ProgramDTO toDTO(Program prog) {   //
+		ProgramDTO dto = new ProgramDTO();
+		dto.setId(prog.getId());
+		dto.setNomeP(prog.getNomeP());
+		dto.setDescription(prog.getDescription());
+		dto.setLocation(prog.getLocation());
+		dto.setContact(prog.getContact());
+		dto.setVagas(prog.getVagas());
+		dto.setPartner(prog.getPartner().getPartner()); // pegar o nome
+		dto.setType(prog.getType().getType());          // pegar o nome
+		return dto;
+	}
 	 
-	 // DTO → ENTITY
-	    public static Program toEntity(ProgramDTO dto) {
-	        Program p = new Program();
-	        p.setId(dto.getId());
-	        p.setNomeP(dto.getNomeP());
-	        p.setDescription(dto.getDescription());
-	        p.setLocation(dto.getLocation());
-	        p.setContact(dto.getContact());
-	        p.setVagas(dto.getVagas());
+	 // DTO -> ENTITY
+	public static Program toEntity(ProgramDTO progDTO) {
+		Program prog = new Program();
+		prog.setId(progDTO.getId());
+		prog.setNomeP(progDTO.getNomeP());
+		prog.setDescription(progDTO.getDescription());
+		prog.setLocation(progDTO.getLocation());
+        prog.setContact(progDTO.getContact());
+        prog.setVagas(progDTO.getVagas());
 
 	        // partner e type são criados apenas no service
 	        
-	        return p;
-	    }
+        return prog;
+	}
 }
 
 

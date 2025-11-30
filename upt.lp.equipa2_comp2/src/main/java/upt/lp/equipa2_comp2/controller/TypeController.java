@@ -2,8 +2,12 @@
  * 
  */
 package upt.lp.equipa2_comp2.controller;
+import upt.lp.equipa2_comp2.dto.TypeDTO;
+import upt.lp.equipa2_comp2.entity.Partner;
 import upt.lp.equipa2_comp2.entity.Type;
 import upt.lp.equipa2_comp2.service.TypeService;
+import upt.lp.equipa2_comp2.mapper.PartnerMapper;
+import upt.lp.equipa2_comp2.mapper.TypeMapper;
 
 import java.util.List;
 
@@ -12,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  * 
  */
 @RestController
-@RequestMapping ("/api/type")
+@RequestMapping ("/voluntariado/types")
 public class TypeController {
 	
 	private final TypeService typeService;
@@ -26,23 +30,28 @@ public class TypeController {
 	}
 	
 	@GetMapping
-	public List<Type>getAll(){
-		return typeService.getAllTypes();
+	public List<TypeDTO>getAllTypes(){
+		return typeService.getAllTypes()
+				.stream()
+				.map(TypeMapper :: toDTO)
+				.toList();
 	}
 	
 	@GetMapping("/{id}")
-	public Type getById(@PathVariable Long id) {
-		return typeService.getType(id);
+	public TypeDTO getById(@PathVariable Long id) {
+		return TypeMapper.toDTO(typeService.getType(id));
 	}
 	
-	@PostMapping
-	public Type create (@RequestBody Type t) {
-		return typeService.createType(t);
+	@PostMapping("/type")
+	public TypeDTO createType(@RequestBody TypeDTO tDTO) {
+		Type t = TypeMapper.toEntity(tDTO);
+		return TypeMapper.toDTO(typeService.createType(tDTO));
 	}
 	
 	@PutMapping("/{id}")
-	public Type update(@PathVariable Long id, @RequestBody Type t) {
-		return typeService.updateType(id, t);
+	public TypeDTO update(@PathVariable Long id, @RequestBody TypeDTO tDTO) {
+		Type update = typeService.updateType(id, tDTO);
+		return TypeMapper.toDTO(update);
 	}
 	
 	@DeleteMapping("/{id}")
