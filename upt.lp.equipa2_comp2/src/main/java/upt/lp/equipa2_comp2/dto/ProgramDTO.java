@@ -6,20 +6,20 @@ public class ProgramDTO {
 	
 	private Long id;
 	
-	@NotBlank(message= "tem de preencher o nome")
+	@NotBlank(message= "Tem de preencher o nome")
     private String nomeP;
-	@NotBlank(message= "tem de preencher a descriçao")
+	@NotBlank(message= "Tem de preencher a descrição")
     private String description;
-	@NotBlank(message= "tem de preencher a localização")
+	@NotBlank(message= "Tem de preencher a localização")
     private String location;
-	@NotNull(message= "tem preencher o contacto")
-	@Size(min = 9, message = "A password deve ter pelo menos 9 caracteres")
+	@NotNull(message= "Tem preencher o contacto")
+	@Size(min = 9, message = "O contacto deve ter pelo menos 9 caracteres")
     private int contact;
-	@NotNull(message= "tem preencher o numero de vagas")
+	@NotNull(message= "Tem preencher o número de vagas")
     private int vagas;
-    @NotBlank(message= "tem de preencher o partner")
+    @NotBlank(message= "Tem de preencher o partner")
     private String partner;
-    @NotBlank(message= "tem de preencher o tipo")
+    @NotBlank(message= "Tem de preencher o tipo")
     private String type;
     
 	/**
