@@ -65,7 +65,7 @@ public class User {
 	/**
 	 * @return the name
 	 */
-	public String getNome() {
+	public String getName() {
 		return name;
 	}
 	
@@ -83,13 +83,16 @@ public class User {
 	public String getEmail() {
 		return email;
 	}
-	
+
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + "]";
 	}
-	
-	
-	
 }

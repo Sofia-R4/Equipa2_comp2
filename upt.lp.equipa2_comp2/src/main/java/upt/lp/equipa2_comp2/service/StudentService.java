@@ -39,7 +39,10 @@ public class StudentService {
 	
 	public Student updateStudent(Long id, Student s) {
 		Student existing = studentRepository.findById(id).orElseThrow(() -> new RuntimeException("Partner not found"));
-		
+		existing.setName(s.getName());
+	    existing.setEmail(s.getEmail());
+	    existing.setPassword(s.getPassword());
+	    existing.setNum(s.getNum());
 		return studentRepository.save(existing);
 	}
 	
