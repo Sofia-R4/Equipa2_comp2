@@ -2,19 +2,17 @@
  * 
  */
 package upt.lp.equipa2_comp2.controller;
-import upt.lp.equipa2_comp2.dto.ProgramDTO;
 import upt.lp.equipa2_comp2.entity.Program;
-import upt.lp.equipa2_comp2.mapper.ProgramMapper;
 import upt.lp.equipa2_comp2.service.ProgramService;
-
+import upt.lp.equipa2_comp2.dto.ProgramDTO;
 import java.util.List;
-
+import upt.lp.equipa2_comp2.mapper.ProgramMapper;
 import org.springframework.web.bind.annotation.*;
 /**
  * 
  */
 @RestController
-@RequestMapping ("/api/programs")
+@RequestMapping ("/voluntariado/programs")
 public class ProgramController {
 	
 	private final ProgramService programService;
@@ -27,8 +25,7 @@ public class ProgramController {
 		this.programService = programService;
 	}
 	
-	@GetMapping
-	 public List<ProgramDTO> getAll() {
+	public List<ProgramDTO> getAll() {
 		return programService.getAllPrograms()
 				.stream()
 				.map(ProgramMapper::toDTO)
@@ -46,15 +43,14 @@ public class ProgramController {
 		 return ProgramMapper.toDTO(programService.createProgram(progDTO));
 	 }
 	 
-	 @PutMapping("/by-name/{nomeP}/location")
+	 @PutMapping("/{id}")
 	 public ProgramDTO updateProgramLocation(@PathVariable String nomeP, @RequestBody ProgramDTO progDTO) {
-	 	Program update = programService.updateProgramPelaLocalizacao(nomeP, ProgramMapper.toEntity(progDTO));
-		 return ProgramMapper.toDTO(update);
-	 }
+		 	Program update = programService.updateProgramPelaLocalizacao(nomeP, ProgramMapper.toEntity(progDTO));
+			 return ProgramMapper.toDTO(update);
+		 }
 	 
 	 @DeleteMapping("{id}")
 	 public void delete (@PathVariable Long id) {
 		 programService.deleteProgram(id);
 	 } 
-	 
 }
