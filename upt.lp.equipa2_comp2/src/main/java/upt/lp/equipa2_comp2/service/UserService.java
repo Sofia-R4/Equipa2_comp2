@@ -5,7 +5,6 @@ package upt.lp.equipa2_comp2.service;
 
 import upt.lp.equipa2_comp2.entity.User;
 import upt.lp.equipa2_comp2.mapper.UserMapper;
-import upt.lp.equipa2_comp2.repository.ProgramRepository;
 import upt.lp.equipa2_comp2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import upt.lp.equipa2_comp2.dto.UserDTO;

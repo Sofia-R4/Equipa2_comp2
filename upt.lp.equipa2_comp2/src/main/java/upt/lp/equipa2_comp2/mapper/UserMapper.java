@@ -7,21 +7,22 @@ import upt.lp.equipa2_comp2.entity.User;
 
 public class UserMapper {
 
-    // DTO → Entity
+    
     public static User toEntity(UserDTO dto) {
         User u = new User();
         u.setName(dto.getName());
         u.setEmail(dto.getEmail());
         u.setPassword(dto.getPassword());
+        
         return u;
     }
-
-    // Entity → DTO
+    
     public static UserResponseDTO toDTO(User u) {
         UserResponseDTO dto = new UserResponseDTO();
         dto.setId(u.getId());
         dto.setName(u.getName());
         dto.setEmail(u.getEmail());
+        
         return dto;
     }
 }
