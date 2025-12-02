@@ -72,13 +72,12 @@ import java.util.Scanner;
 		      "password": "%s"
 		    }
 		    """.formatted(name, email, password);
-
+		    
 		    HttpHeaders headers = new HttpHeaders();
 		    headers.setContentType(MediaType.APPLICATION_JSON);
 		    HttpEntity<String> request = new HttpEntity<>(json, headers);
 		    String response = rest.postForObject(BASE_URL + "/voluntariado/users/criar/admin", request, String.class);
-		    System.out.println(response);
-		    }
+		}
 		
 		private static void createStudent() {
 		    System.out.print("Nome: ");
