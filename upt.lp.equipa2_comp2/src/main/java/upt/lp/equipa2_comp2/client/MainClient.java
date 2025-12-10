@@ -31,7 +31,7 @@ import java.util.Scanner;
 				System.out.println("9 - Mudar a localização de um programa");
 				System.out.println("10 - Procurar um programa por nome");
 				System.out.println("0 - Sair");
-				System.out.println("Fazer push novo repo");
+				//novo repositorio novo
 				
 				int option = Integer.parseInt(sc.nextLine());
 				
