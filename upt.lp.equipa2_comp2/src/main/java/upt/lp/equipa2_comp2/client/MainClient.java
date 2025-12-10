@@ -18,7 +18,7 @@ import java.util.Scanner;
 		
 		public static void main(String[] args) {
 			while (true) {
-				System.out.println("\n");
+				System.out.println("");
 				System.out.println("1 - Criar admin");
 				System.out.println("2 - Criar estudante");
 				System.out.println("3 - Criar programa");			
@@ -77,9 +77,9 @@ import java.util.Scanner;
 
 		    HttpHeaders headers = new HttpHeaders(); //cria um objeto que guarda informação http
 		    headers.setContentType(MediaType.APPLICATION_JSON);  //define que o tipo de conteúdo da requisição é JSON
-		    HttpEntity<String> request = new HttpEntity<>(json, headers);  //usado pelo Spring para requisições corpo e cabeçalho e cria pacote
+		    HttpEntity<String> request = new HttpEntity<>(json, headers);  //usado pelo Spring para enviar requisições c corpo e cabeçalho
 		    String response = rest.postForObject(BASE_URL + "/voluntariado/users/admin", request, String.class);
-		    //template rest do spring, envia uma requisição post
+		    //template rest do spring, envia uma requisição post para o endpoint e guarda a resposta no servidor
 		    System.out.println(response);
 		    }
 		
@@ -178,6 +178,7 @@ import java.util.Scanner;
 			try {
 				String response = rest.getForObject(url, String.class);
 				System.out.println(response);
+				//vai buscar os dados do endpoint e devolve o que tem na bd
 				 
 			} catch(Exception e) {
 				System.out.println("Erro: " + e.getMessage());
