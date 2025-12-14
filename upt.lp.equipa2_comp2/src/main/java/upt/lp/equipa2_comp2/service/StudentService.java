@@ -51,8 +51,6 @@ public class StudentService {
 		s= studentRepository.save(s);
 		
 		return StudentMapper.toDTO(s);
-	}
-	
-	
+	}	
 
 }

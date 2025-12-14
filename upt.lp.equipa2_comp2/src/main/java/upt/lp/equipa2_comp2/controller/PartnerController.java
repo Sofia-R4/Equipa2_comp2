@@ -3,8 +3,11 @@
  */
 package upt.lp.equipa2_comp2.controller;
 import upt.lp.equipa2_comp2.dto.PartnerDTO;
+import upt.lp.equipa2_comp2.dto.TypeDTO;
 import upt.lp.equipa2_comp2.entity.Partner;
+import upt.lp.equipa2_comp2.entity.Type;
 import upt.lp.equipa2_comp2.mapper.PartnerMapper;
+import upt.lp.equipa2_comp2.mapper.TypeMapper;
 import upt.lp.equipa2_comp2.service.PartnerService;
 
 import java.util.List;
@@ -41,11 +44,12 @@ public class PartnerController {
 		return PartnerMapper.toDTO(partnerService.getPartner(id));
 	 }
 	
-	@PostMapping("/partner")
-	 public PartnerDTO createPartner(@Valid @RequestBody PartnerDTO pDTO) {
-		Partner p = PartnerMapper.toEntity(pDTO);
-		return PartnerMapper.toDTO(partnerService.createPartner(pDTO));
-	 }
+	@PostMapping
+	public PartnerDTO createPartner(@Valid @RequestBody PartnerDTO pDTO) {
+	    Partner saved = partnerService.createPartner(pDTO); // serviço recebe DTO e retorna Type
+	    return PartnerMapper.toDTO(saved);
+	}
+
 	
 	@PutMapping("/by-name/{id}")
 	 public PartnerDTO update(@PathVariable Long id, @Valid @RequestBody PartnerDTO pDTO) {

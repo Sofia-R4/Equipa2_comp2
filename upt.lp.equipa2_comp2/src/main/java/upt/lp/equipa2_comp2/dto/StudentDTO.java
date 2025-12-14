@@ -22,7 +22,7 @@ public class StudentDTO {
 	    public int getNum() {
 	    	return num;
 	    }
-	    public void setNum() {
+	    public void setNum(int num) {
 	    	this.num = num;
 	    }
 	    

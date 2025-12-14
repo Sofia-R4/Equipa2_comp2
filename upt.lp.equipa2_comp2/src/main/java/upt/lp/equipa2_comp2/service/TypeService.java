@@ -49,5 +49,4 @@ public class TypeService {
 	public void deleteType(Long id) {
 		typeRepository.deleteById(id);
 	}
-
 }
