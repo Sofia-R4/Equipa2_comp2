@@ -16,6 +16,9 @@ import java.util.Scanner;
 		
 		public static void main(String[] args) {
 			while (true) {
+
+				System.out.println("");
+
 				System.out.println(" 💕Voluntariado💕");
 				System.out.println("1 - Criar admin");
 				System.out.println("2 - Criar estudante");
@@ -28,6 +31,7 @@ import java.util.Scanner;
 				System.out.println("9 - Mudar a localização de um programa");
 				System.out.println("10 - Procurar um programa por nome");
 				System.out.println("0 - Sair");
+				//novo repositorio novo
 				
 				int option = Integer.parseInt(sc.nextLine());
 				
@@ -72,12 +76,16 @@ import java.util.Scanner;
 		      "password": "%s"
 		    }
 		    """.formatted(name, email, password);
-		    
-		    HttpHeaders headers = new HttpHeaders();// cria um objeto q guarda inf http
-		    headers.setContentType(MediaType.APPLICATION_JSON);//define q o tipo de conteudo da requisiçao e de formato json
-		    HttpEntity<String> request = new HttpEntity<>(json, headers);//usado pelo spring para enviar requisiçoes corpo e cabeçalho
-		    String response = rest.postForObject(BASE_URL + "/voluntariado/users/criar/admin", request, String.class);//template rest do spring envia uma requisiçao post para o endpoint e guarda a resposta no servidor 
-		}
+
+
+		    HttpHeaders headers = new HttpHeaders(); //cria um objeto que guarda informação http
+		    headers.setContentType(MediaType.APPLICATION_JSON);  //define que o tipo de conteúdo da requisição é JSON
+		    HttpEntity<String> request = new HttpEntity<>(json, headers);  //usado pelo Spring para enviar requisições c corpo e cabeçalho
+		    String response = rest.postForObject(BASE_URL + "/voluntariado/users/admin", request, String.class);
+		    //template rest do spring, envia uma requisição post para o endpoint e guarda a resposta no servidor
+		    System.out.println(response);
+		    }
+
 		
 		private static void createStudent() {
 		    System.out.print("Nome: ");
@@ -173,8 +181,13 @@ import java.util.Scanner;
 			
 			try {
 				String response = rest.getForObject(url, String.class);
+
+				System.out.println(response);
+				//vai buscar os dados do endpoint e devolve o que tem na bd
+
 				System.out.println(response+"/n");
 				//Vai buscar os dados do endpoint e devolve o corpo da resposta da base de dados
+
 				 
 			} catch(Exception e) {
 				System.out.println("Erro: " + e.getMessage());

@@ -38,7 +38,7 @@ public class ProgramController {
 		 return ProgramMapper.toDTO(programService.getProgramByName(nomeP));  //converte para DTO, pede ao service para procurar
 	 }
 	 
-	 @PostMapping("/criar")
+	 @PostMapping
 	 public ProgramDTO createProgram (@Valid @RequestBody ProgramDTO progDTO) {
 		 Program prog = ProgramMapper.toEntity(progDTO);  //converte o DTO que vem da API para uma entidade da bd
 
@@ -46,12 +46,12 @@ public class ProgramController {
 	 }																		//DTO para devolver ao utilizador
 	 
 
-	 @PutMapping("/by-name/{nomeP}")
-	 public ProgramDTO updateProgramLocation(@PathVariable String nomeP,@Valid @RequestBody ProgramDTO progDTO) {
+	 @PutMapping("/{id}")
+	 public ProgramDTO updateProgram(@PathVariable Long id, @Valid @RequestBody ProgramDTO progDTO) {
+	     Program updated = programService.updateProgramById(id, progDTO);
+	     return ProgramMapper.toDTO(updated);
+	 }
 
-		 	Program update = programService.updateProgramPelaLocalizacao(nomeP, ProgramMapper.toEntity(progDTO)); //converte JSON 
-			 return ProgramMapper.toDTO(update);  //para entity chama o service para atualizar e converte para DTO para o cliente
-		 }
 	 
 	 @DeleteMapping("{id}")
 	 public void delete (@PathVariable Long id) {   //não devolve nada

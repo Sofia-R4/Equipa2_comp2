@@ -41,10 +41,10 @@ public class TypeController {
 		return TypeMapper.toDTO(typeService.getType(id));
 	}
 	
-	@PostMapping("/type")
+	@PostMapping
 	public TypeDTO createType(@Valid @RequestBody TypeDTO tDTO) {
-		Type t = TypeMapper.toEntity(tDTO);
-		return TypeMapper.toDTO(typeService.createType(tDTO));
+	    Type saved = typeService.createType(tDTO); // serviço recebe DTO e retorna Type
+	    return TypeMapper.toDTO(saved);
 	}
 	
 	@PutMapping("/by-name/{id}")

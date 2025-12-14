@@ -45,7 +45,7 @@ public class ProgramService {
 	}
 	
 	public Program getProgramByName(String nameP) { //procura um programa pelo nome
-		return programRepository.findByNomeP(nameP).orElseThrow(() -> new RuntimeException("Program not found"));
+		return programRepository.findByNomeP(nameP).orElseThrow(() -> new RuntimeException("Programa não encontrado"));
 	}  //chama o repositório que fala com a bd e devolve o que encontrar (que pode ou não existir)
 	
 	public Program createProgram(ProgramDTO progDTO) {
@@ -75,14 +75,36 @@ public class ProgramService {
 		return programRepository.save(prog); //salva na bd
 	}
 	
-	public Program updateProgramPelaLocalizacao(String nomeP, Program prog) {
-		Program existing = programRepository.findByNomeP(nomeP).orElseThrow(() -> new RuntimeException("Program not found"));
-		//procura na bd se existe, se não retorna nao encontrado
-		if (prog.getLocation() != null && !prog.getLocation().isBlank()) { //se localizaçao nao for null nem estiver em branco
-		    existing.setLocation(prog.getLocation()); //atualiza
-		}
-	    
-		return programRepository.save(existing); //retorna o programa atualizado
+	public Program updateProgramById(Long id, ProgramDTO progDTO) {
+	    Program existing = programRepository.findById(id)
+	            .orElseThrow(() -> new RuntimeException("Program not found"));
+
+	    // Atualiza campos simples
+	    existing.setNomeP(progDTO.getNomeP());
+	    existing.setDescription(progDTO.getDescription());
+	    existing.setLocation(progDTO.getLocation());
+	    existing.setVagas(progDTO.getVagas());
+	    existing.setContact(progDTO.getContact());
+
+	    // Partner
+	    Partner partner = partnerRepository.findByPartner(progDTO.getPartner())
+	            .orElseGet(() -> {
+	                Partner newPartner = new Partner();
+	                newPartner.setPartner(progDTO.getPartner());
+	                return partnerRepository.save(newPartner);
+	            });
+	    existing.setPartner(partner);
+
+	    // Type
+	    Type type = typeRepository.findByType(progDTO.getType())
+	            .orElseGet(() -> {
+	                Type newType = new Type();
+	                newType.setType(progDTO.getType());
+	                return typeRepository.save(newType);
+	            });
+	    existing.setType(type);
+
+	    return programRepository.save(existing);
 	}
 	
 	public void deleteProgram(Long id) { //nao retorna nada entao é void
