@@ -47,4 +47,11 @@ public class UserService {
 
         return UserMapper.toDTO(user);
     }
+    
+    public boolean login(String username, String password) {
+        return userRepository
+                .findByName(username)
+                .map(u -> u.getPassword().equals(password))
+                .orElse(false);
+    }
 }
