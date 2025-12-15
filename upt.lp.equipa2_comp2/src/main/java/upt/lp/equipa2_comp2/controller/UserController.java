@@ -8,6 +8,8 @@ import upt.lp.equipa2_comp2.service.UserService;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 /**
@@ -41,5 +43,17 @@ public class UserController {
 	public UserResponseDTO create (@Valid  @RequestBody UserDTO dto) {
 		return userService.create(dto);
 	}
+	@PostMapping("/login")
+	public ResponseEntity<Void> login(@RequestBody UserDTO dto) {
+
+	    boolean valid = userService.login(dto.getName(), dto.getPassword());
+
+	    if (valid) {
+	        return ResponseEntity.ok().build(); // 200
+	    } else {
+	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // 401
+	    }
+	}
+
 	
 }
