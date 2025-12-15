@@ -43,6 +43,8 @@ public class UserController {
 	public UserResponseDTO create (@Valid  @RequestBody UserDTO dto) {
 		return userService.create(dto);
 	}
+	
+	//endpoint para verificar se existe
 	@PostMapping("/login")
 	public ResponseEntity<Void> login(@RequestBody UserDTO dto) {
 
