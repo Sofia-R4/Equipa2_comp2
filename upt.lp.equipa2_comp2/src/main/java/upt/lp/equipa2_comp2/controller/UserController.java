@@ -48,7 +48,7 @@ public class UserController {
 	@PostMapping("/login")
 	public ResponseEntity<Void> login(@RequestBody UserDTO dto) {
 
-	    boolean valid = userService.login(dto.getName(), dto.getPassword());
+	    boolean valid = userService.login(dto.getEmail(), dto.getPassword());
 
 	    if (valid) {
 	        return ResponseEntity.ok().build(); // 200
