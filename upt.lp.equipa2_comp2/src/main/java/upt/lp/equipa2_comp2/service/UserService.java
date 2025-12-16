@@ -48,9 +48,9 @@ public class UserService {
         return UserMapper.toDTO(user);
     }
     
-    public boolean login(String username, String password) {
+    public boolean login(String email, String password) {
         return userRepository
-                .findByName(username)
+                .findByEmail(email)
                 .map(u -> u.getPassword().equals(password))
                 .orElse(false);
     }
